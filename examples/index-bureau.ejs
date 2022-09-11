@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BureauWeb</title>
+</head>
+
+<body>
+    <h1>BureauWeb</h1>
+    <p>The dynamic website generator for your OpenBureau server!</p>
+    <p>Server type: <%= serverType %></p>
+
+    <h2>Players</h2>
+    <% const userArr = Object.values(users); %>
+    <p>Number of players: <%= userArr.length %></p>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Avatar</th>
+        </tr>
+        <% userArr.forEach(user => { %>
+        <tr>
+            <th><%= user.id %></th>
+            <th><%= user.name %></th>
+            <th><%= user.avatar %></th>
+        </tr>
+        <% }); %>
+    </table>
+</body>
+
+</html>

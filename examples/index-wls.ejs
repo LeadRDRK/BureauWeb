@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BureauWeb</title>
+</head>
+
+<body>
+    <h1>BureauWeb</h1>
+    <p>The dynamic website generator for your OpenBureau server!</p>
+    <p>Server type: <%= serverType %></p>
+
+    <h2>Bureaus</h2>
+<% const bureauArr = Object.values(bureaus);
+if (bureauArr.length > 0) { %>
+    <p>Number of bureaus: <%= bureauArr.length %></p>
+
+<% bureauArr.forEach(bureau => {
+    const userArr = Object.values(bureau.users); %>
+    <h3>Bureau #<%= bureau.id %></h3>
+    <p>World: <%= bureau.world %></p>
+    <p>Players: <%= userArr.length %></p>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Avatar</th>
+        </tr>
+        <% userArr.forEach(user => { %>
+        <tr>
+            <th><%= user.id %></th>
+            <th><%= user.name %></th>
+            <th><%= user.avatar %></th>
+        </tr>
+        <% }); %>
+    </table>
+<% });
+}
+else {
+%>
+    <p>No bureaus are currently running.</p>
+<%
+}
+%>
+
+</body>
+
+</html>
