@@ -26,6 +26,10 @@ fastify.get("/:name", (req, res) => {
     res.sendFile(req.params.name);
 });
 
+fastify.setErrorHandler((error, _, res) => {
+    Utils.errorPage(res, error.statusCode ? error.statusCode : 500);
+});
+
 fastify.setNotFoundHandler((_, res) => {
     Utils.errorPage(res, 404);
 });
