@@ -110,8 +110,7 @@ async function main() {
     if (!(await initIpc()))
         return;
     
-    if (!Config.isEnabled("API_ONLY"))
-        Routes.indexPage(fastify, ipc, serverType);
+    Routes.indexPage(fastify, ipc, serverType);
 
     fastify.listen({ port: PORT }, err => {
         if (err) Log.error(err);
